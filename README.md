@@ -8,8 +8,6 @@ the same time to see the version that gives a better conversion rate.
 
 <ins>**Data Structure**</ins>
 
-##
-
 The data follows the schema below
 +Silver: The cleaned data ready for analysis
 +Gold: Anaylzed data showing findings
@@ -17,14 +15,16 @@ The data follows the schema below
 The bronze data consists of two tables(cvs files): conversion and conversion time tables
 
 **Table 1: Converion informtion**
-*user id(text): unique identifier for each user
-*test group(text): user assigned to in an A/B test "converted" indicates the user completed a desire action
-\*total ads(int): the number of ads the user was exposed to
+
+- user id(text): unique identifier for each user
+- test group(text): user assigned to in an A/B test "converted" indicates the user completed a desire action
+- total ads(int): the number of ads the user was exposed to
 
 **Table 2: Conversion time**
-*user id(text):unique identifier for each user
-*most ads day(text): the day when the user saw the most ads
-\*most ads hour(timedate): the hour during which the user was exposed to the highest number of ads
+
+- user id(text):unique identifier for each user
+- most ads day(text): the day when the user saw the most ads
+- most ads hour(timedate): the hour during which the user was exposed to the highest number of ads
 
 <ins>**Code Desription**</ins>
 
