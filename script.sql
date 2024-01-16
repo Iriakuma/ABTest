@@ -1,9 +1,12 @@
 /*Tables were created using create table and import data option*/
 select *
-from abtimedata;
+from abtimedata
+limit 10;
 
 select *
-from abtestconv;
+from abtestconv
+limit 10;
+
 --checking for null values
 select *
 from abtestconv
@@ -11,6 +14,7 @@ where abtestconv is null;
 
 select count(*) as "count of users"
 from abtestconv;
+
 select count(*)
 from abtimedata;
 
@@ -20,16 +24,18 @@ from information_schema.columns
 where table_schema = 'public' and
 table_name = 'abtestconv';
 
-select test_group,count(test_group) as "count of test group"
+select column_name, data_type
+from information_schema.columns
+where table_schema = 'public' and
+table_name = 'abtimedata';
+
+--Aggregating the conversions(ad and non_ads) for each group 
+select test_group, count(test_group) as "count of test group"
 from abtestconv
 group by conversion
 order by 2 desc;
 
-select test_group,conversion, count(conversion) as "conversion"
-from abtestconv
-group by conversion, 1
-order by 2;
-
+--conversion rate:
 --percentage of true(converted) in experimental group
 with true_ad_conv as (
 select count(conversion) as conv_count
@@ -113,16 +119,11 @@ where conversion ='TRUE' and test_group = 'ad'
 group by 1
 Order by 2 desc;
 
---The idea of the dataset is to analyze the groups, find if the ads
---were successful, and 
---if the difference between the groups is statistically significant.
 
 
-select test_group, conversion, count(conversion)
-from abtestconv
-group by test_group,conversion;
 
---conversion rate:
+
+
 
 
 
